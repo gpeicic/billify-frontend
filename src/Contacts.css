@@ -1,0 +1,89 @@
+/* Contacts.css */
+.contacts-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Koristi cijelu visinu vidljivog dijela ekrana */
+  background-image: url('C:/Users/gabi/Desktop/storeLogo/deepPurpleBlur.jpg');
+  background-repeat: no-repeat;
+  width: 100%;
+  z-index: 900;
+}
+
+.contacts-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px; /* Dodavanje paddinga */
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+.contacts-paper {
+  margin-top: 150px;
+  max-width: 90%; /* Smanjenje maksimalne širine */
+  background-image: url('C:/Users/gabi/Desktop/storeLogo/deepPurple.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  animation: fadeIn 1s ease-in-out;
+  transition: transform 0.5s ease-in-out;
+  padding: 20px; /* Dodavanje paddinga */
+  box-shadow: 20px 20px 40px rgba(137, 77, 172, 0.379), 10px 10px 20px rgba(137, 77, 172, 0.37);
+}
+
+.map-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 1200px) {
+  .contacts-paper {
+    max-width: 85%; /* Smanjenje maksimalne širine za srednje velike ekrane */
+  }
+}
+
+@media (max-width: 992px) {
+  .contacts-paper {
+    max-width: 80%; /* Daljnje smanjenje maksimalne širine */
+    padding: 15px; /* Smanjenje paddinga */
+  }
+}
+
+@media (max-width: 768px) {
+  .contacts-paper {
+    max-width: 90%; /* Širina prilagođena manjim ekranima */
+    padding: 10px; /* Daljnje smanjenje paddinga */
+  }
+  
+  .map-container iframe {
+    width: 100%; /* Postavljanje iframe-a da zauzima punu širinu */
+    height: 300px; /* Smanjenje visine iframe-a */
+  }
+}
+
+@media (max-width: 480px) {
+  .contacts-paper {
+    max-width: 95%; /* Širina prilagođena vrlo malim ekranima */
+    padding: 5px; /* Daljnje smanjenje paddinga */
+  }
+
+  .map-container iframe {
+    height: 200px; /* Daljnje smanjenje visine iframe-a */
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

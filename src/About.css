@@ -1,0 +1,107 @@
+.about-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  
+  
+
+}
+body{
+  background-image: url('C:/Users/gabi/Desktop/storeLogo/deepPurpleBlur.jpg');
+  background-repeat: no-repeat;
+  
+}
+
+.about-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  height: 100%;
+  width: 100%;
+  padding: 3;
+  
+}
+
+.box {
+  border-radius: 10px;
+  overflow: hidden;
+  color: rgb(180, 180, 180);
+  
+}
+
+.about-paper {
+  margin-top: 200px;
+  max-width: 800px;
+  background-image: url('C:/Users/gabi/Desktop/storeLogo/deepPurple.jpg');
+  background-repeat: no-repeat;
+ 
+  box-sizing: border-box;
+ /* background-position-y: -100px;
+  background-position-x: -240px;*/
+  border-radius: 0px;
+  overflow: hidden;
+  animation: fadeIn 1s ease-in-out;
+  transition: transform 0.5s ease-in-out;
+  padding-bottom: 100px;
+  box-shadow: 20px 20px 40px rgba(106,27,49,255), 10px 10px 20px rgba(100, 100, 100, 0.575); /* Shadow moved to right and below */
+}
+
+@media (max-width: 1200px) {
+  .about-paper {
+    padding: 15px; /* Smanjenje paddinga na manjim ekranima */
+    max-width: 90%; /* Smanjenje maksimalne širine */
+    
+  }
+ 
+  
+}
+
+@media (max-width: 992px) {
+  .about-paper {
+    padding: 10px; /* Daljnje smanjenje paddinga */
+    max-width: 95%; /* Daljnje smanjenje maksimalne širine */
+  }
+  
+}
+
+@media (max-width: 768px) {
+  .about-paper {
+    padding: 8px; /* Daljnje smanjenje paddinga */
+    max-width: 100%; /* Maksimalna širina 100% */
+  }
+  
+  
+  .box {
+    padding: 10px; /* Unutarnji razmak unutar Box-a */
+  }
+
+  .about-container {
+    padding: 10px; /* Smanjenje paddinga kontejnera */
+  }
+}
+
+@media (max-width: 480px) {
+  .about-paper {
+    padding: 5px; /* Daljnje smanjenje paddinga */
+  }
+  .about-background{
+    background-image: url('C:/Users/gabi/Desktop/storeLogo/deepPurpleBlur.jpg');
+    background-repeat: no-repeat;
+  }
+  .box {
+    padding: 5px; /* Daljnje smanjenje paddinga unutar Box-a */
+  }
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-10%);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
