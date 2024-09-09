@@ -18,27 +18,29 @@ const LoginPage = () => {
 
     try {
       // Send credentials tyation
-      const response = await axios.post('http://localhost:8080/login', 
+      const response = await axios.post('http://localhost:8080/login',
         { email, password }, 
         { withCredentials: false });
 
       console.log(response.headers);
+      const token = response.headers['authorization'];
+     
 
-      setMessage('Login successful'); // Display success message
+      setMessage('Login successful');
       setMessageType('success');
       axios.defaults.headers.common['Authorization'] = response.headers['authorization'];
       // TODO Zamijenit s providerom
       console.log(response.data);
-      localStorage.setItem('userEmail', email); // Store email in localStorage
-      localStorage.setItem('id', response.data.id); // Store email in localStorage
-      localStorage.setItem('isAuthenticated', 'true'); // Set authentication flag
-      navigate('/accounts'); // Redirect to accounts page
+      localStorage.setItem('userEmail', email);
+      localStorage.setItem('id', response.data.id);
+      localStorage.setItem('isAuthenticated', 'true');
+      navigate('/accounts');
     } catch (error) {
       if (error.response) {
-        setMessage(error.response.data); // Display error message
+        setMessage(error.response.data);
         setMessageType('error');
       } else {
-        setMessage('An error occurred'); // Other errors
+        setMessage('An error occurred');
         setMessageType('error');
       }
     }
@@ -48,8 +50,7 @@ const LoginPage = () => {
   const handleGoogleSignIn = (response) => {
     const idToken = response.credential;
 
-    // Send ID token to backend for authentication
-    axios.post('http://localhost:8080/kupci/googleLogin', { idToken }, {
+    axios.post('http://localhost:8080/google/googleLogin', { idToken }, {
       withCredentials: false,
       headers: {
         'Content-Type': 'application/json',
@@ -58,9 +59,9 @@ const LoginPage = () => {
     .then(response => {
       setMessage('Login successful');
       setMessageType('success');
-      localStorage.setItem('userEmail', response.data.email); // Store email from response
-      localStorage.setItem('isAuthenticated', 'true'); // Set authentication flag
-      navigate('/accounts'); // Redirect to accounts page
+      localStorage.setItem('userEmail', response.data.email);
+      localStorage.setItem('isAuthenticated', 'true');
+      navigate('/accounts');
     })
     .catch(error => {
       setMessage('Failed to authenticate with Google');

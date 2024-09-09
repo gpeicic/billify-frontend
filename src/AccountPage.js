@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Navbar from './Navbar'; // Uvoz Navbar komponente
-import './AccountPage.css'; // Import CSS file
+import Navbar from './Navbar';
+import './AccountPage.css';
 
 const AccountPage = () => {
   const [accounts, setAccounts] = useState([]);
@@ -14,7 +14,7 @@ const AccountPage = () => {
 
     const fetchAccounts = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/kupci/${id}/accounts`);
+        const response = await axios.get(`http://localhost:8080/clients/${id}/accounts`);
         console.log(response.data);
         const groupedAccounts = groupAccountsByDate(response.data);
         setAccounts(groupedAccounts);
@@ -27,7 +27,7 @@ const AccountPage = () => {
         setLoading(false);
       }
     };
-    
+
     fetchAccounts();
   }, []);
 
@@ -45,7 +45,7 @@ const AccountPage = () => {
     if (value) {
       const filtered = Object.keys(accounts).reduce((acc, date) => {
         const filteredAccounts = accounts[date].filter(account =>
-          account.ducan?.imeDucana.toLowerCase().includes(value.toLowerCase())
+          account.store?.storeName.toLowerCase().includes(value.toLowerCase())
         );
         if (filteredAccounts.length) acc[date] = filteredAccounts;
         return acc;
@@ -78,18 +78,18 @@ const AccountPage = () => {
                         alt="Store Logo"
                         className="store-logo"
                       />
-                      <h2 className="card-title">{account.ducan?.imeDucana || 'N/A'}</h2>
-                      <span className="total-amount">€{account.ukupnaCijena ? account.ukupnaCijena.toFixed(2) : '0.00'}</span>
+                      <h2 className="card-title">{account.store?.storeName || 'N/A'}</h2>
+                      <span className="total-amount">€{account.totalPrice ? account.totalPrice.toFixed(2) : '0.00'}</span>
                     </div>
                     <div className="card-details">
-                      <p>Date: {new Date(account.datum).toLocaleDateString()}</p>
-                      <p>Address: {account.ducan?.adresa || 'N/A'}</p>
+                      <p>Date: {new Date(account.date).toLocaleDateString()}</p>
+                      <p>Address: {account.store?.address || 'N/A'}</p>
                       <p>Products:</p>
                       <ul>
-                        {account.kupljeniProizvodi && account.kupljeniProizvodi.length ? (
-                          account.kupljeniProizvodi.map((item) => (
-                            <li key={item.proizvod.id}>
-                              {item.proizvod.imeProizvoda} - Quantity: {item.kolicina} | Price per unit: €{item.proizvod.cijena} | Total: €{(item.proizvod.cijena * item.kolicina).toFixed(2)}
+                        {account.boughtItems && account.boughtItems.length ? (
+                          account.boughtItems.map((item) => (
+                            <li key={item.item.id}>
+                              {item.item.itemName} - Quantity: {item.amount} | Price per unit: €{item.item.price} | Total: €{(item.item.price * item.amount).toFixed(2)}
                             </li>
                           ))
                         ) : (

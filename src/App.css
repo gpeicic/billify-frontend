@@ -1,37 +1,32 @@
-/* Osnovni stilovi za tijelo stranice */
-
-/* Osnovni stilovi za kartice */
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Centriranje kartica u kontejneru */
-  gap: 20px; /* Razmak između kartica */
-  padding: 20px; /* Dodaj padding oko kartica */
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
 }
 
 .card {
-  border: 1px solid #ddd; /* Rub kartica */
-  border-radius: 8px; /* Zaobljeni rubovi */
-  padding: 20px; /* Unutarnji razmak unutar kartica */
-  width: 300px; /* Širina kartica */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sjena kartica */
-  text-align: center; /* Centriranje teksta unutar kartica */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
-/* Raspored kartica u redove s tri kartice po redu */
 @media (min-width: 600px) {
   .card-container {
-    justify-content: space-between; /* Dodaj razmak između kartica kad je dovoljno prostora */
+    justify-content: space-between;
   }
 
   .card {
-    width: calc(33.333% - 20px); /* Širina kartica u redovima, uzimajući u obzir razmak */
+    width: calc(33.333% - 20px);
   }
 }
 
-/* Raspored kartica u jedan stupac na manjim ekranima */
 @media (max-width: 600px) {
   .card {
-    width: 100%; /* Kartice zauzimaju cijelu širinu na manjim ekranima */
+    width: 100%;
   }
 }

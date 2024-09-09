@@ -1,11 +1,21 @@
-// src/ProtectedRoute.js
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
-const ProtectedRoute = ({ children }) => {
-  const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true'; // Provjera autentifikacije
+const isAuthenticated = () => {
 
-  return isAuthenticated ? children : <Navigate to="/" />;
+  const token = localStorage.getItem('authToken');
+  console.log('Token:', token); // Check if the token is being retrieved
+  return !!token;
+  
+};
+
+const ProtectedRoute = ({ children }) => {
+  if (!isAuthenticated()) {
+   
+    return <Navigate to="/" />;
+  }
+
+  return children;
 };
 
 export default ProtectedRoute;

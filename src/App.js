@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import LoginPage from './LoginPage';
-import AccountPage from './AccountPage'; // Dodajte ovu komponentu
+import AccountPage from './AccountPage'; 
 import SignUp from './SignUp';
 import About from './About';
 import Contacts from './Contacts';

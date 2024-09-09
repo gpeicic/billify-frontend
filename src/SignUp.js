@@ -17,11 +17,10 @@ const SignUp = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // Debounce funkcija za provjeru emaila
   const checkEmail = debounce(async (email) => {
     if (email) {
       try {
-        const response = await axios.get('http://localhost:8080/kupci/check', {
+        const response = await axios.get('http://localhost:8080/clients/check', {
           params: { email }
         });
         setEmailValid(response.data);
@@ -33,12 +32,10 @@ const SignUp = () => {
     }
   }, 500);
 
-  // Provjera emaila kad se promijeni
   useEffect(() => {
     checkEmail(email);
-  }, [email, checkEmail]); // Dodajemo checkEmail kao zavisnost
+  }, [email, checkEmail]);
 
-  // Provjera valjanosti lozinke i usklađenosti lozinki
   useEffect(() => {
     setPasswordValid(password.length >= 6);
     setPasswordsMatch(password === confirmPassword);
@@ -48,9 +45,9 @@ const SignUp = () => {
     e.preventDefault();
     setLoading(true);
 
-    // Ponovno provjeri email validaciju prije slanja zahtjeva za registraciju
+
     try {
-      const response = await axios.get('http://localhost:8080/kupci/check', {
+      const response = await axios.get('http://localhost:8080/clients/check', {
         params: { email }
       });
       if (!response.data) {
@@ -72,7 +69,7 @@ const SignUp = () => {
           email: email,
           lozinka: password
         };
-        await axios.post('http://localhost:8080/kupci/register', kupac, {
+        await axios.post('http://localhost:8080/clients/register', kupac, {
           headers: {
             'Content-Type': 'application/json'
           }
@@ -91,7 +88,7 @@ const SignUp = () => {
         setLoading(false);
       }
     } else {
-      setLoading(false); // Ovdje ispravite stanje učitavanja
+      setLoading(false);
     }
   };
 
