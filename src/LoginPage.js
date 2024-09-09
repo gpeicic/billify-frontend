@@ -9,7 +9,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const [messageType, setMessageType] = useState(''); // 'success' or 'error'
-  const navigate = useNavigate(); // Hook for programmatic navigation
+  const navigate = useNavigate();
 
   // Handle regular email and password login
   const handleSubmit = async (e) => {
@@ -22,15 +22,14 @@ const LoginPage = () => {
         { email, password }, 
         { withCredentials: false });
 
-      console.log(response.headers);
-      const token = response.headers['authorization'];
      
 
       setMessage('Login successful');
       setMessageType('success');
       axios.defaults.headers.common['Authorization'] = response.headers['authorization'];
+      localStorage.setItem('token', response.headers['authorization']);
       // TODO Zamijenit s providerom
-      console.log(response.data);
+      console.log(response.headers['authorization']);
       localStorage.setItem('userEmail', email);
       localStorage.setItem('id', response.data.id);
       localStorage.setItem('isAuthenticated', 'true');

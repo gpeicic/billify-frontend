@@ -1,21 +1,12 @@
+// ProtectedRoute.js
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
-const isAuthenticated = () => {
+const ProtectedRoute = ({ element: Component, ...rest }) => {
+  const bearer = localStorage.getItem('token');
 
-  const token = localStorage.getItem('authToken');
-  console.log('Token:', token); // Check if the token is being retrieved
-  return !!token;
-  
-};
-
-const ProtectedRoute = ({ children }) => {
-  if (!isAuthenticated()) {
-   
-    return <Navigate to="/" />;
-  }
-
-  return children;
+console.log(bearer)
+  return bearer ? Component : <Navigate to="/" />;
 };
 
 export default ProtectedRoute;
