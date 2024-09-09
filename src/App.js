@@ -5,7 +5,7 @@ import AccountPage from './AccountPage';
 import SignUp from './SignUp';
 import About from './About';
 import Contacts from './Contacts';
-import ProtectedRoute from './ProtectedRoute';
+
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 
@@ -16,14 +16,11 @@ const App = () => {
       <Routes>
       
           <Route path="/" element={<LoginPage />} />
-          <Route
-            path="/accounts"
-            element={
-              <ProtectedRoute>
-                <AccountPage />
-              </ProtectedRoute>
-            }
-          />
+          
+               
+          <Route path="/accounts" element={<AccountPage />} />
+          
+        
           <Route path="*" element={<Navigate to="/" />} />
         
         <Route path="/signUp" element={<SignUp />}/>
