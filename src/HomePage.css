@@ -1,0 +1,176 @@
+/* Background gradient for the intro */
+.intro-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #f0f0f0, #d3d3d3);
+    animation: fadeOut 17s forwards;
+  }
+  
+  /* Ensure the body has a similar background */
+  body {
+    background: linear-gradient(135deg, #f0f0f0, #d3d3d3);
+  }
+
+  
+  /* Center the typewriter effect */
+  .typewriter {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2em;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid;
+    text-align: center; 
+    width: fit-content;  
+    animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+  }
+  
+  /* Typing animation */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  /* Cursor blink animation */
+  @keyframes blink {
+    50% { border-color: transparent; }
+  }
+  
+  /* Fade out after typewriter finishes */
+  @keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  
+  /* Main home content background */
+  .home-content {
+    background-image:url("../public/robot3.jpg");
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-size: cover;     /* Cover the entire area */
+    background-position: 100px center;
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+  }
+  .second-content{
+    background:linear-gradient(135deg,rgb(95, 95, 95),rgb(29, 29, 29));
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items at the start for height consistency */
+  }
+  .lorem-text {
+    font-family: 'Orbitron', sans-serif; /* Use Orbitron font */
+    font-size: 24px; 
+    color: black;
+    max-width: 600px;
+    text-align:justify;
+    padding-top: 250px;
+    padding-left: 100px;
+    line-height: 1.5; 
+  }
+  .lorem-text-second{
+    font-family: 'Orbitron', sans-serif; /* Use Orbitron font */
+    font-size:35px; 
+    color: white;
+    max-width: 1600px;
+    text-align:  center;
+    margin-top: 100px;
+    margin-left: 120px;
+  }
+  
+  
+  .second-content {
+    display: flex; /* Align children (image and text) side by side */
+    align-items: flex-start; /* Align items at the start to maintain height */
+    
+  }
+  
+  .picture {
+    margin-left: 200px;
+    margin-right: 400px;
+    margin-top: 250px; /* Space between the image and text */
+  }
+  
+  .left-image {
+    width: 500px; /* Set a width for the image */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
+  
+
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400&display=swap');
+
+  .futuristic-navbar {
+    position:absolute; 
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px; /* Add some padding */
+    background-color: transparent; /* Make it transparent */
+    z-index: 1000; /* Ensure it stays above other content */
+  }
+  
+  .logo {
+    color: black;
+    font-size: 50px; /* Adjust font size */
+    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
+  }
+  
+  .menu-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+   
+  }
+  
+  .line {
+    width: 25px; /* Width of each line */
+    height: 3px; /* Height of each line */
+    background-color: black; /* Change this to your preferred color */
+    margin: 4px 0; /* Space between lines */
+  }
+  
+  
+  /* For the 3D model section */
+  canvas {
+    width: 100%;
+    height: 100%;
+  }
+  .button-group {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+  }
+  
+  .login-button {
+    background-color: black; /* Black background */
+    color: white; /* Text color */
+    font-family: 'Orbitron', sans-serif; /* Use Orbitron font */
+    font-size: 18px; /* Adjust font size */
+    padding: 10px 20px; /* Add padding */
+    border: none; /* Remove border */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+  .signup-button {
+    background-color: green; /* Green background */
+    color: white; /* Text color */
+    font-family: 'Orbitron', sans-serif; /* Use Orbitron font */
+    font-size: 18px; /* Adjust font size */
+    padding: 10px 20px; /* Add padding */
+    border: none; /* Remove border */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+  .login-button:hover,
+  .signup-button:hover {
+    opacity: 0.8; /* Slightly change opacity on hover */
+  }

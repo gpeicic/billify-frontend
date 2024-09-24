@@ -7,11 +7,7 @@
   
 
 }
-body{
-  background-image: url('C:/Users/gabi/Desktop/storeLogo/deepPurpleBlur.jpg');
-  background-repeat: no-repeat;
-  
-}
+
 
 .about-container {
   display: flex;
@@ -34,8 +30,7 @@ body{
 .about-paper {
   margin-top: 200px;
   max-width: 800px;
-  background-image: url('C:/Users/gabi/Desktop/storeLogo/deepPurple.jpg');
-  background-repeat: no-repeat;
+  background-image: url("../src/background/deepPurple.jpg");
  
   box-sizing: border-box;
  /* background-position-y: -100px;
@@ -87,7 +82,7 @@ body{
     padding: 5px; /* Daljnje smanjenje paddinga */
   }
   .about-background{
-    background-image: url('C:/Users/gabi/Desktop/storeLogo/deepPurpleBlur.jpg');
+    background-image: url("../src/background/deepPurple.jpg");
     background-repeat: no-repeat;
   }
   .box {

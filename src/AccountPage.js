@@ -33,7 +33,7 @@ const AccountPage = () => {
 
   const groupAccountsByDate = (accounts) => {
     return accounts.reduce((acc, account) => {
-      const date = new Date(account.datum).toLocaleDateString();
+      const date = new Date(account.date).toLocaleDateString();
       if (!acc[date]) acc[date] = [];
       acc[date].push(account);
       return acc;
@@ -69,7 +69,7 @@ const AccountPage = () => {
           ) : (
             Object.keys(filteredAccounts).map(date => (
               <div key={date} className="date-group">
-                <h3 className="date-header">{date}</h3>
+                <h3 className="date-header"> {new Date(date).toLocaleDateString()}</h3>
                 {filteredAccounts[date].map((account) => (
                   <div key={account.id} className="account-card">
                     <div className="card-header">

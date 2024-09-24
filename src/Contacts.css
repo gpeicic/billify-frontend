@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh; /* Koristi cijelu visinu vidljivog dijela ekrana */
-  background-image: url('C:/Users/gabi/Desktop/storeLogo/deepPurpleBlur.jpg');
+  background-image: url('../src/background/deepPurpleBlur.jpg');
   background-repeat: no-repeat;
   width: 100%;
   z-index: 900;
@@ -23,7 +23,7 @@
 .contacts-paper {
   margin-top: 150px;
   max-width: 90%; /* Smanjenje maksimalne širine */
-  background-image: url('C:/Users/gabi/Desktop/storeLogo/deepPurple.jpg');
+  background-image: url('../src/background/deepPurple.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
