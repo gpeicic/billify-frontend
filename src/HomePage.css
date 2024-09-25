@@ -1,176 +1,339 @@
 /* Background gradient for the intro */
 .intro-screen {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: linear-gradient(135deg, #f0f0f0, #d3d3d3);
-    animation: fadeOut 17s forwards;
-  }
-  
-  /* Ensure the body has a similar background */
-  body {
-    background: linear-gradient(135deg, #f0f0f0, #d3d3d3);
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #f0f0f0, #d3d3d3);
+  animation: fadeOut 17s forwards;
+}
 
-  
-  /* Center the typewriter effect */
-  .typewriter {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 2em;
-    color: #333;
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: 2px solid;
-    text-align: center; 
-    width: fit-content;  
-    animation: typing 2s steps(22), blink .5s step-end infinite alternate;
-  }
-  
-  /* Typing animation */
-  @keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-  }
-  
-  /* Cursor blink animation */
-  @keyframes blink {
-    50% { border-color: transparent; }
-  }
-  
-  /* Fade out after typewriter finishes */
-  @keyframes fadeOut {
-    0% { opacity: 1; }
-    100% { opacity: 0; }
-  }
-  
-  /* Main home content background */
-  .home-content {
-    background-image:url("../public/robot3.jpg");
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background-size: cover;     /* Cover the entire area */
-    background-position: 100px center;
-    background-repeat: no-repeat; /* Prevent the image from repeating */
-  }
-  .second-content{
-    background:linear-gradient(135deg,rgb(95, 95, 95),rgb(29, 29, 29));
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Align items at the start for height consistency */
-  }
-  .lorem-text {
-    font-family: 'Orbitron', sans-serif; /* Use Orbitron font */
-    font-size: 24px; 
-    color: black;
-    max-width: 600px;
-    text-align:justify;
-    padding-top: 250px;
-    padding-left: 100px;
-    line-height: 1.5; 
-  }
-  .lorem-text-second{
-    font-family: 'Orbitron', sans-serif; /* Use Orbitron font */
-    font-size:35px; 
-    color: white;
-    max-width: 1600px;
-    text-align:  center;
-    margin-top: 100px;
-    margin-left: 120px;
-  }
-  
-  
-  .second-content {
-    display: flex; /* Align children (image and text) side by side */
-    align-items: flex-start; /* Align items at the start to maintain height */
-    
-  }
-  
-  .picture {
-    margin-left: 200px;
-    margin-right: 400px;
-    margin-top: 250px; /* Space between the image and text */
-  }
-  
-  .left-image {
-    width: 500px; /* Set a width for the image */
-    height: auto; /* Maintain aspect ratio */
-  }
-  
-  
+/* Ensure the body has a similar background */
+body {
+  background: linear-gradient(135deg, #f0f0f0, #d3d3d3);
+}
 
-  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400&display=swap');
+/* Center the typewriter effect */
+.typewriter {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 2em;
+  color: #111111;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid;
+  text-align: center; 
+  display: inline-block; /* Allow for centering */
+  animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+  margin: 0 ; /* Center the typewriter in its container */
+}
+.typing {
+  transition: width 0.5s ease; /* Smooth transition for width */
+}
 
-  .futuristic-navbar {
-    position:absolute; 
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px; /* Add some padding */
-    background-color: transparent; /* Make it transparent */
-    z-index: 1000; /* Ensure it stays above other content */
-  }
+
+/* Typing animation */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* Cursor blink animation */
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+/* Fade out after typewriter finishes */
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Main home content background */
+.home-content {
+  background-image: url("../public/robot3.jpg");
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-size: cover; /* Cover the entire area */
+  background-position: 100px center;
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+}
+
+.second-content {
+  background-color: rgb(2, 2, 2);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items at the start for height consistency */
+  padding-bottom: 1000px;
+}
+
+.third-content {
+  background-color: rgb(255, 255, 255);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items at the start for height consistency */
+  padding-bottom: 1000px;
+}
+
+.lorem-text {
+  font-family: 'Orbitron', sans-serif; /* Use Orbitron font */
+  font-size: 24px; 
+  color: black;
+  max-width: 600px;
+  text-align: justify;
+  padding-top: 250px;
+  padding-left: 100px;
+  line-height: 1.5; 
+}
+
+.lorem-text-second {
+  font-family: 'Orbitron', sans-serif; /* Use Orbitron font */
+  font-size: 40px; 
+  color: white;
+  max-width: 600px;
+  text-align: center;
+  margin-top: 100px;
+  margin-left: 620px;
+}
+
+.lorem-text-second2 {
+  font-family: 'Orbitron', sans-serif; /* Use Orbitron font */
+  font-size: 25px; 
+  color: rgba(255, 255, 255, 0.479);
+  max-width: 900px;
+  text-align: center;
+  margin-top: 40px;
+  margin-left: 530px;
+}
+
+.phone-frame-wrapper {
+  position: relative;
+  width: 60%; /* Adjust width as needed */
+  margin: 10px auto;
+}
+
+.phone-frame {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.phone-video {
+  position: absolute;
+  top: 8.5%; /* Adjust to fit the screen area of your phone frame */
+  left: 15.5%; /* Adjust to fit the screen area of your phone frame */
+  width: 69%; /* Adjust width to fit the phone screen */
+  height: 79%; /* Adjust height to fit the phone screen */
+  border-radius: 10px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between; /* Optional: Adjusts space between items */
+  align-items: flex-start; /* Align items at the start */
+}
+
+.billify-description {
+  margin-left: 500px;
+}
+
+.billify-description2 {
+  margin-right: 400px;
+}
+
+.billify-description2, .billify-description {
+  width: 20%; /* Adjust width for your text container */
+  text-align: left;
+  color: rgba(255, 255, 255, 0.541); /* Adjust text color to your design */
+  font-family: 'Orbitron', sans-serif;
+  opacity: 0; /* Start invisible */
+  transform: translateY(50px); /* Start lower */
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+}
+
+.hidden {
+  opacity: 0; /* Start invisible */
+  transform: translateY(50px); /* Move down */
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+}
+
+.fade-out {
+  opacity: 0; /* Fully invisible */
+  transform: translateY(50px); /* Move down */
+}
+
+.visible {
+  opacity: 1; /* Fully visible */
+  transform: translateY(0); /* Original position */
+}
+
+.billify-description .intro {
+  font-size: 1rem; /* Make text more prominent */
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.billify-description .billify-title {
+  font-size: 2.2rem; /* Bold and big */
+  font-weight: bold;
+  margin: 10px 0;
+}
+.third-content{
+  background-color:#171717 ;
   
-  .logo {
-    color: black;
-    font-size: 50px; /* Adjust font size */
-    font-weight: bold;
-    font-family: 'Orbitron', sans-serif;
-  }
-  
-  .menu-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-   
-  }
-  
-  .line {
-    width: 25px; /* Width of each line */
-    height: 3px; /* Height of each line */
-    background-color: black; /* Change this to your preferred color */
-    margin: 4px 0; /* Space between lines */
-  }
-  
-  
-  /* For the 3D model section */
-  canvas {
-    width: 100%;
-    height: 100%;
-  }
-  .button-group {
-    display: flex;
-    gap: 10px; /* Space between buttons */
-  }
-  
-  .login-button {
-    background-color: black; /* Black background */
-    color: white; /* Text color */
-    font-family: 'Orbitron', sans-serif; /* Use Orbitron font */
-    font-size: 18px; /* Adjust font size */
-    padding: 10px 20px; /* Add padding */
-    border: none; /* Remove border */
-    cursor: pointer; /* Pointer cursor on hover */
-    border-radius: 5px; /* Rounded corners */
-  }
-  
-  .signup-button {
-    background-color: green; /* Green background */
-    color: white; /* Text color */
-    font-family: 'Orbitron', sans-serif; /* Use Orbitron font */
-    font-size: 18px; /* Adjust font size */
-    padding: 10px 20px; /* Add padding */
-    border: none; /* Remove border */
-    cursor: pointer; /* Pointer cursor on hover */
-    border-radius: 5px; /* Rounded corners */
-  }
-  
-  .login-button:hover,
-  .signup-button:hover {
-    opacity: 0.8; /* Slightly change opacity on hover */
-  }
+}
+.card{
+  background-color: rgb(0, 0, 0);
+  border-radius: 15px; /* Rounded edges */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  width: 1000px; /* Set a width for the card */
+  height: 600px;
+  margin-top:0;
+  margin-left: 450px;
+  padding: 15px; /* Padding inside the card */
+}
+.card p{
+  font-size: 1.5rem;
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+  text-align: left;
+
+}
+.billify-description .billify-subtitle {
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #ffffff; /* Keep it distinct */
+  margin-bottom: 20px;
+}
+
+.billify-description .final-text {
+  color: #c0c0c0; /* Slightly lighter text */
+}
+
+.picture {
+  margin-left: 200px;
+  margin-right: 400px;
+  margin-top: 250px; /* Space between the image and text */
+}
+
+.left-image {
+  width: 500px; /* Set a width for the image */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Import Orbitron font */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400&display=swap');
+
+.futuristic-navbar {
+  position: absolute; 
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px; /* Add some padding */
+  background-color: transparent; /* Make it transparent */
+  z-index: 1000; /* Ensure it stays above other content */
+}
+
+.logo {
+  color: black;
+  font-size: 50px; /* Adjust font size */
+  font-weight: bold;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.line {
+  width: 25px; /* Width of each line */
+  height: 3px; /* Height of each line */
+  background-color: black; /* Change this to your preferred color */
+  margin: 4px 0; /* Space between lines */
+}
+
+/* For the 3D model section */
+canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px; /* Space between buttons */
+}
+
+.login-button {
+  background-color: black; /* Black background */
+  color: white; /* Text color */
+  font-family: 'Orbitron', sans-serif; /* Use Orbitron font */
+  font-size: 18px; /* Adjust font size */
+  padding: 10px 20px; /* Add padding */
+  border: none; /* Remove border */
+  cursor: pointer; /* Pointer cursor on hover */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.signup-button {
+  background-color: green; /* Green background */
+  color: white; /* Text color */
+  font-family: 'Orbitron', sans-serif; /* Use Orbitron font */
+  font-size: 18px; /* Adjust font size */
+  padding: 10px 20px; /* Add padding */
+  border: none; /* Remove border */
+  cursor: pointer; /* Pointer cursor on hover */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.login-button:hover,
+.signup-button:hover {
+  opacity: 0.8; /* Slightly change opacity on hover */
+}
+
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  height: 400px; /* Adjust height as needed */
+  overflow: hidden;
+}
+
+.slideshow {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  position: relative;
+  height: 300px; /* Adjust height as needed */
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.slide-image {
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+}
+
+.slide-content {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+.naslov{
+  margin-top:200px;
+  margin-left:450px;
+  font-size: 2rem;
+  color:rgb(150, 150, 150);
+  font-family: 'Orbitron', sans-serif;
+}
