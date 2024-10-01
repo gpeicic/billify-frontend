@@ -1,17 +1,133 @@
-
 .page-container {
-  color: transparent;
+  display: flex;
+  flex-wrap: wrap; /* Enable wrapping for containers */
   font-family: Arial, Helvetica, sans-serif;
-  padding: 20px;
-  min-height: 100vh;
-  position: relative;
+  margin-left: 10px;
+  margin-top: 15px;
+}
+
+.cards-container-1 {
+  flex: 1 1 30%;
+  
+  background: black;
+  color: white;
+  border-radius: 10px;
+  position: relative; /* Important for the button positioning */
   overflow: hidden;
-  max-width: 1200px;
-  margin: 0 auto; 
+  transition: max-height 0.3s ease; /* Smooth height transition */
+}
+
+
+.cards-container-1.collapsed {
+  max-height: 380px; /* Collapsed state height */
+}
+
+.cards-container-1.expanded {
+  max-height: none; /* Expand to show full content */
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Dark overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Make sure it's on top of other elements */
+}
+
+.modal-content {
+  height: 90%;
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  width: 90%; /* Adjust the width as needed */
+  max-width: 800px; /* Set a maximum width */
+  overflow-y: auto; /* Add scroll if content overflows */
+}
+.modal-content .account-card{
+  margin-left: 225px;
+}
+.modal-content h2{
+  margin-left: 235px;
+}
+.modal-content .card-details {
+  display: block;
+  margin: 0 auto;
+}
+
+
+.close-button {
+  background-color: #ff4d4d; /* Red color for close button */
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.close-button:hover {
+  background-color: #ff1a1a; /* Darker red on hover */
+}
+
+.expand-button {
+  background-color: rgba(135, 6, 250, 0.3);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.expand-button:hover {
+  background-color: rgba(135, 6, 250, 0.6);
+}
+.cards-container-1,
+.cards-container-2,
+.cards-container-3 {
+  flex: 1 1 28%; /* Make sure containers take up about 30% of the row */
+  margin-left:5px;
+  
+  color: white;
+  border-radius: 10px;
+  background: black;
+  max-height: 380px;
+}
+.cards-container-3{
+  margin-right: 10px;
+}
+.cards-container-4 {
+  flex: 0 0 97.7%; /* Force it to take full width on the next row */
+  margin: 10px;
+  background: black;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  max-height: 380px;
+}
+
+.cards-container h2 {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+
+
+
+.prvi{
+  background-color:#171717;
+  padding-top: 5px;
+  padding-bottom: 600px;
 }
 
 body {
-  background-image: url('../src/background/deepPurple.jpg');
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
@@ -45,17 +161,7 @@ body {
 }
 
 
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background:  rgba(0, 0, 0, 0.445);
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  z-index: 1000;
-}
+
 
 .filter-input {
   width: 100%;
@@ -68,24 +174,11 @@ body {
 }
 
 
-.cards-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  background: rgba(0, 0, 0, 0.445);
-  width: auto;
-  padding: 50px 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  margin-top: 100px;
-}
-
 
 .date-group {
   width: 100%;
   max-width: 800px;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -93,52 +186,52 @@ body {
 
 .date-header {
   font-size: 1.5rem;
-  color: white;
-  border-bottom: 2px solid #e9ecef;
-  margin-bottom: 10px;
-  padding-bottom: 5px;
+  color: #ffffff79;
+  border-bottom: 2px solid #ffffff1c;
+  margin: 0 auto;
+  margin-top:5px;
   width: 100%;
   text-align: center;
 }
 
 .account-card {
-  margin-top: 20px;
-  background: #7dc1d615;
+  margin-top: 5px;
+  background: rgb(29, 37, 61);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  padding:5px;
   color: rgb(250, 250, 250);
   font-weight: bold;
   width: 300px;
   transition: box-shadow 0.3s;
   box-sizing: border-box;
   overflow: hidden;
-  cursor: pointer;
   display: flex;
   flex-direction: column;
 }
 
-.account-card:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
 
 .card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 2px solid #e9ecef;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
+
+  
+  
 }
 
 .card-header h2 {
   margin: 0;
-  color: rgb(250, 250, 250);
+  color:rgb(252,82,149);
+  
 }
 
 .total-amount {
   font-weight: bold;
-  color: #007bff;
+  color: #17d5d8;
+}
+.card-subtitle{
+  color: rgb(75, 96, 218);
 }
 
 .store-logo {
@@ -152,10 +245,6 @@ body {
   display: none;
 }
 
-.account-card:hover .card-details {
-  display: block;
-  margin-top: 10px;
-}
 
 ul {
   padding: 0;
@@ -273,6 +362,14 @@ li p {
     opacity: 1;
 }
 
+.chart-container {
+  position: relative; /* Added to contain the area under the curve */
+  max-width: 70%; /* Make sure it doesn’t exceed the parent width */
+  overflow: hidden; /* Hide overflow */
+  padding: 20px; /* Optional: add some padding */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: for styling */
+ 
+}
 
 .filter-input {
     padding: 8px;
@@ -284,5 +381,4 @@ li p {
     width: 200px;
     background-color: rgba(0, 0, 0, 0.1);
 }
-
 }

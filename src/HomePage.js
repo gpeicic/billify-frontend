@@ -1,26 +1,38 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import Slider from 'react-slick';
 import './HomePage.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { Carousel } from '3d-react-carousal';
+import cardImage from '../src/card.jpg';
+import cardImage2 from '../src/card2.jpg';
+import cardImage3 from '../src/card3.jpg';
+import picture1 from '../src/picture3.jpg';
+import picture2 from '../src/picture2.jpg';
+import picture3 from '../src/picture.jpg';
+let slides = [
+  <img src={cardImage} alt="1" />,
+  <img src={cardImage2} alt="2" />,
+  <img src={cardImage3} alt="3" />,
+];
 
 const Typewriter = ({ text, onComplete }) => {
   const [displayedText, setDisplayedText] = useState('');
-  const [isTyping, setIsTyping] = useState(true); // State to track typing status
+  const [isTyping, setIsTyping] = useState(true);
 
   useEffect(() => {
     let index = 0;
     const interval = setInterval(() => {
       setDisplayedText((prev) => prev + text.charAt(index));
       index++;
+      
       if (index === text.length) {
         clearInterval(interval);
-        setIsTyping(false); // Set typing to false when done
-        setTimeout(onComplete, 1000); // Delay before transition
+        setIsTyping(false);
+        setTimeout(onComplete, 3000);
       }
     }, 100);
-    
+
     return () => clearInterval(interval);
   }, [text, onComplete]);
 
@@ -30,52 +42,31 @@ const Typewriter = ({ text, onComplete }) => {
     </h1>
   );
 };
+
 const HomePage = () => {
   const [showMainContent, setShowMainContent] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-  const [scrollDirection, setScrollDirection] = useState("down");
-  const descriptionRef = useRef(null);
-  const lastScrollY = useRef(0);
-
-  const slides = [
-    { text: "Slide 1: Learn to manage your bills efficiently with Billify.", img: "/path/to/image1.jpg" },
-    { text: "Slide 2: Track your expenses effortlessly.", img: "/path/to/image2.jpg" },
-    { text: "Slide 3: Receive real-time notifications.", img: "/path/to/image3.jpg" },
-    { text: "Slide 4: Gain insights into your spending habits.", img: "/path/to/image4.jpg" },
-  ];
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-  };
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+  const [isFirstVisible, setIsFirstVisible] = useState(false);
+  const [isFirstVisibleDots, setIsFirstVisibleDots] = useState(false);
+  const [isSecondVisible, setIsSecondVisible] = useState(false);
+  const firstDescriptionRef = useRef(null);
+  const [contentOpacity, setContentOpacity] = useState(0);
+  const secondDescriptionRef = useRef(null);
 
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
 
-    // Determine scroll direction
-    if (currentScrollY < lastScrollY.current) {
-      setScrollDirection("up");
-    } else {
-      setScrollDirection("down");
-    }
-    lastScrollY.current = currentScrollY;
-
-    // Check visibility of description
-    if (descriptionRef.current) {
-      const { top } = descriptionRef.current.getBoundingClientRect();
+    if (firstDescriptionRef.current) {
+      const { top } = firstDescriptionRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
+      setIsFirstVisible(top < windowHeight * 0.75 && top > 0);
+      setIsFirstVisibleDots(top < windowHeight * 1.2 && top > 0);
+    }
 
-      // Check if element is partially visible
-      if (top < windowHeight * 0.75 && top > 0) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
+    if (secondDescriptionRef.current) {
+      const { top } = secondDescriptionRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      setIsSecondVisible(top < windowHeight * 0.75 && top > 0);
     }
   };
 
@@ -88,17 +79,38 @@ const HomePage = () => {
 
   const handleTypewriterComplete = () => {
     setShowMainContent(true);
+    setTimeout(() => {
+      setContentOpacity(1); // Set opacity to 1 after a short delay
+    }, 1);
+  };
+
+  const handleSlideChange = (index) => {
+    setCurrentSlideIndex(index);
+  };
+
+  const renderDots = () => {
+    return (
+      <div className={`dots-container ${isFirstVisibleDots ? 'expanded' : ''}`}>
+        {slides.map((_, index) => (
+          <span
+            key={index}
+            className={`dot ${currentSlideIndex === index ? 'active' : ''}`}
+            onClick={() => handleSlideChange(index)}
+          ></span>
+        ))}
+      </div>
+    );
   };
 
   return (
     <div>
       {!showMainContent ? (
         <div className="intro-screen">
-          <Typewriter text="H ello Customer, Welcome" onComplete={handleTypewriterComplete} />
+          <Typewriter text="H ello Customer," onComplete={handleTypewriterComplete} />
         </div>
       ) : (
         <>
-          <nav className="futuristic-navbar">
+          <nav className={`futuristic-navbar ${showMainContent ? 'visible' : ''}`}style={{ opacity: contentOpacity }}>
             <div className="logo">Billify</div>
             <div className="button-group">
               <Link to="/login">
@@ -109,7 +121,7 @@ const HomePage = () => {
               </Link>
             </div>
           </nav>
-          <div className="home-content">
+          <div className={`home-content ${showMainContent ? 'visible' : ''}`}style={{ opacity: contentOpacity }}>
             <p className="lorem-text">
               You Probably Don’t Want to Look Like This While Managing Your Bills…<br /><br />
               That’s Where Billify Comes In!<br /><br />
@@ -139,19 +151,18 @@ const HomePage = () => {
             </div>
             <div className='container'>
               <div
-                className={`billify-description ${isVisible ? 'visible' : 'hidden'} ${scrollDirection === "up" ? 'fade-out' : ''}`}
-                ref={descriptionRef}
+                className={`billify-description ${isSecondVisible ? 'visible' : 'hidden'}`}
+                ref={firstDescriptionRef}
               >
                 <p className="intro">
                   <span style={{ color: "white", fontSize: "1.2rem" }}>Billify</span> allows you to automatically transfer your store bills into a <span style={{ color: "white", fontSize: "1.1rem" }}>digital format.</span>
                   With advanced tracking and real-time notifications, your bill management has never been easier.
                 </p>
-                <p className="intro">
-                  With <span style={{ color: "white", fontSize: "1.1rem" }}>Billify</span>, stay on top of your financial transactions in one easy-to-use app.
-                  Monitor expenses across multiple stores, generate insights, and streamline your bill management.
-                </p>
               </div>
-              <div className={`billify-description2 ${isVisible ? 'visible' : 'hidden'} ${scrollDirection === "up" ? 'fade-out' : ''}`}>
+              <div
+                className={`billify-description2 ${isSecondVisible ? 'visible' : 'hidden'}`}
+                ref={secondDescriptionRef}
+              >
                 <h1 className="intro">
                   <span style={{ color: "white", fontSize: "3rem", wordSpacing: "0px" }}>Manage your bills</span>
                 </h1>
@@ -162,11 +173,74 @@ const HomePage = () => {
             </div>
           </div>
           <div className="third-content">
-              <p className='naslov'>Check out the highlighted features.</p>
-              <div className="card">
-                  <p>Ovdje ce ici opis kartice.</p>
+            <p className='naslov'>Check out the highlighted features.</p>
+              <Carousel slides={slides} autoplay={true} interval={3000} onSlideChange={handleSlideChange}/>
+              {renderDots()}
+              <div className='container' style={{ marginTop: '100px' }}>
+                <div
+                  className={`billify-description ${isFirstVisible ? 'visible' : 'hidden'}`}
+                  ref={firstDescriptionRef}
+                >
+                  <h1 className="intro">
+                    <span style={{ color: "white", fontSize: "3rem", wordSpacing: "0px" }}>Manage your bills</span>
+                  </h1>
+                  <h2 className="intro">
+                    <span style={{ fontSize: "1.3rem", }}>Track, save, and stay organized</span>
+                  </h2>
+                </div>
+                <div className={`billify-description2 ${isFirstVisible ? 'visible' : 'hidden'}`}>
+                  <p className="intro">
+                    <span style={{ color: "white", fontSize: "1.2rem" }}>Billify</span> allows you to automatically transfer your store bills into a <span style={{ color: "white", fontSize: "1.1rem" }}>digital format.</span>
+                    With advanced tracking and real-time notifications, your bill management has never been easier.
+                  </p>
+                </div>
               </div>
           </div>
+          <div className='forth-content'>
+            <p className ='forth-title'>Explore the full story.</p>
+            <div className="image-container">
+              <p className='forth-subtitle'>Discover the App.</p>
+                <img src={picture1} alt="Centered" className="centered-image" />
+            </div>
+            <div className="side-by-side-container">
+                <img src={picture2} alt="Side Image 1" className="side-image" />
+                <img src={picture3} alt="Side Image 2" className="side-image" />
+            </div>
+            <div className='container' style={{ marginTop: '100px', maxWidth:'1800px'}}>
+                <div
+                  div className='billify-description'style={{ opacity:'1'}}>
+                  <h1 className="intro">
+                    <span style={{ color: "white", fontSize: "3rem", wordSpacing: "0px" }}>Manage your bills</span>
+                  </h1>
+                  <h2 className="intro">
+                    <span style={{ fontSize: "1.3rem", }}>Track, save, and stay organized</span>
+                  </h2>
+                </div>
+                <div className='billify-description2'style={{ opacity:'1'}}>
+                  <p className="intro">
+                    <span style={{ color: "white", fontSize: "1.2rem" }}>Billify</span> allows you to automatically transfer your store bills into a <span style={{ color: "white", fontSize: "1.1rem" }}>digital format.</span>
+                    With advanced tracking and real-time notifications, your bill management has never been easier.
+                  </p>
+                </div>
+              </div>
+          </div>
+
+          {/* Footer */}
+          <footer className="footer">
+            <div className="footer-content">
+              <p>&copy; 2024 Billify. All rights reserved.</p>
+              <div className="footer-links">
+                <Link to="/privacy">Privacy Policy</Link>
+                <Link to="/terms">Terms of Service</Link>
+                <Link to="/contact">Contact Us</Link>
+              </div>
+              <div className="social-media">
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+              </div>
+            </div>
+          </footer>
         </>
       )}
     </div>

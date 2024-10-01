@@ -1,77 +1,147 @@
 /* Navbar.css */
 .navbar {
-    background-color: #333; /* Pozadina navigacijske trake */
-    padding: 10px;
-    width: 100%; /* Osigurajte da zauzima cijelu širinu */
-    box-sizing: border-box; /* Uključuje padding u ukupnu širinu */
-  }
+  background-color: black;
+  margin:10px;
+  padding-top: 30px;
+  padding-bottom: 25px;
+  display: flex;
+  border-radius: 15px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-content {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #53c8ca;
+  margin-left: 300px; /* Adjust margin to fit layout */
+}
+
+.navbar-username {
+  color: white;
+  font-family: 'Orbitron', sans-serif; /* Use Orbitron font */
+  font-size: 24px; 
+  margin-left: 20px;
+}
+
+.navbar-icons {
+  display: flex;
+  margin-left: 750px;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.icon-buttons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 5px;
+}
+.nav-icon:hover{
+  color:rgba(255, 255, 255, 0.473);
+}
+
+.nav-icon {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  color: white; /* Change icon color to white */
+  font-size: 24px; /* Adjust size as needed */
+}
+/* Add this to your existing Navbar.css */
+/* Add this to your existing Navbar.css */
+.navbar-labels {
+  position: relative; /* Make it relative for positioning the indicator */
+  display: flex; /* Change to flex to arrange labels side by side */
+  gap: 15px; /* Space between labels */
+  align-items: center; /* Center the labels vertically */
+  padding-top: 30px; /* Adjust padding to create space above the indicator */
+}
+
+.indicator {
   
+  position: absolute; /* Position absolutely to move under the labels */
+  bottom: -25px; /* Position below the labels; adjust as needed */
+  height: 4px; /* Thickness of the line */
+  background-color: #53c8ca; /* Color of the line */
+  transition: left 0.3s ease, width 0.3s ease; /* Smooth transition for movement */
+}
+
+
+.nav-link {
+  color:rgb(129, 138, 168); /* Color of the text */
+  font-weight: bold;
+  font-family: 'Orbitron', sans-serif; /* Use Orbitron font */
+  background: none;
+  border: none;
+  margin-left: 20px; /* Space between links */
+  font-size: 16px; /* Font size */
+  cursor: pointer;
+}
+
+.nav-link.active {
+  color: white; /* Active link color */
+}
+
+
+.filter-input {
+  color: #fff; /* Text color */
+  background: none;
+  border: none;
+  margin-left: 20px; /* Space between filter and links */
+  font-size: 16px; /* Font size */
+  cursor: pointer;
+}
+
+
+
+.filter-input {
+  margin-left: 20px; /* Space between filter and links */
+  padding: 5px;
+  font-size: 16px;
+}
+
+@media (max-width: 1500px) {
   .navbar-content {
-    display: flex;
-    margin-left: 800px;
-    justify-content: flex-end; /* Pomaknite sadržaj na desnu stranu */
-    align-items: center; /* Vertikalno centriranje */
+    margin-left: 500px; /* Decrease margin-left for smaller screens */
   }
-  
-  .nav-link {
-    color: #a5a5a5; /* Boja teksta */
-    background: none;
-    border: none;
-    margin-left: 20px; /* Razmak između linkova */
-    font-size: 16px; /* Veličina fonta */
-    cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .navbar-content {
+    margin-left: 400px; /* Further decrease margin-left */
   }
-  .filter-input{
-    color: #fff; /* Boja teksta */
-    background: none;
-    border: none;
-    margin-left: 20px; /* Razmak između linkova */
-    font-size: 16px; /* Veličina fonta */
-    cursor: pointer;
+}
+
+@media (max-width: 992px) {
+  .navbar-content {
+    margin-left: 200px; /* Further decrease margin-left */
   }
-  
-  .nav-link:hover {
-    text-decoration:underline; /* Efekt pri hoveru */
+}
+
+@media (max-width: 768px) {
+  .navbar-content {
+    margin-left: 100px; /* Further decrease margin-left */
   }
-  
-  .filter-input {
-    margin-left: 20px; /* Razmak između filtera i linkova */
-    padding: 5px;
-    font-size: 16px;
+}
+
+@media (max-width: 480px) {
+  .navbar-content {
+    margin-left: 0; /* Remove margin-left for very small screens */
+    gap: 10px; /* Smaller gap between elements */
+    padding: 0 10px; /* Add some padding on the sides for smaller screens */
   }
-  @media (max-width: 1500px) {
-    .navbar-content {
-      margin-left: 500px; /* Smanjenje margin-left za manje ekrane */
-    }
+
+  .nav-link, .filter-input {
+    font-size: 10px; /* Reduce font size for very small screens */
   }
-  
-  @media (max-width: 1200px) {
-    .navbar-content {
-      margin-left: 400px; /* Daljnje smanjenje margin-left */
-    }
-  }
-  
-  @media (max-width: 992px) {
-    .navbar-content {
-      margin-left: 200px; /* Daljnje smanjenje margin-left */
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .navbar-content {
-      margin-left: 100px; /* Daljnje smanjenje margin-left */
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .navbar-content {
-      margin-left: 0; /* Ukloni margin-left za vrlo male ekrane */
-      gap: 10px; /* Manji razmak između elemenata */
-      padding: 0 10px; /* Dodaj malo paddinga sa strane na manjim ekranima */
-    }
-  
-    .nav-link, .filter-input {
-      font-size: 10px;
-       /* Smanji veličinu fonta na vrlo malim ekranima */
-    }
-}  
+}

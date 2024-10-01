@@ -71,7 +71,7 @@ const LoginPage = () => {
           <Grid container>
             <Grid item xs={12} sm={6}
               sx={{
-                backgroundImage: 'url("/billify.png")',
+                backgroundColor:'black',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
                 backgroundSize: 'cover',
