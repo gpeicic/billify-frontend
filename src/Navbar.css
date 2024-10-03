@@ -1,7 +1,7 @@
 /* Navbar.css */
 .navbar {
   background-color: black;
-  margin:10px;
+  margin: 10px;
   padding-top: 30px;
   padding-bottom: 25px;
   display: flex;
@@ -23,13 +23,13 @@
   align-items: center;
   justify-content: center;
   background-color: #53c8ca;
-  margin-left: 300px; /* Adjust margin to fit layout */
+  margin-left: 300px;
 }
 
 .navbar-username {
   color: white;
-  font-family: 'Orbitron', sans-serif; /* Use Orbitron font */
-  font-size: 24px; 
+  font-family: 'Orbitron', sans-serif;
+  font-size: 24px;
   margin-left: 20px;
 }
 
@@ -45,8 +45,9 @@
   gap: 15px;
   margin-bottom: 5px;
 }
-.nav-icon:hover{
-  color:rgba(255, 255, 255, 0.473);
+
+.nav-icon:hover {
+  color: rgba(255, 255, 255, 0.473);
 }
 
 .nav-icon {
@@ -54,94 +55,87 @@
   border: none;
   cursor: pointer;
   padding: 5px;
-  color: white; /* Change icon color to white */
-  font-size: 24px; /* Adjust size as needed */
+  color: white;
+  font-size: 24px;
 }
-/* Add this to your existing Navbar.css */
-/* Add this to your existing Navbar.css */
+
 .navbar-labels {
-  position: relative; /* Make it relative for positioning the indicator */
-  display: flex; /* Change to flex to arrange labels side by side */
-  gap: 15px; /* Space between labels */
-  align-items: center; /* Center the labels vertically */
-  padding-top: 30px; /* Adjust padding to create space above the indicator */
+  position: relative;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  padding-top: 30px;
 }
 
 .indicator {
-  
-  position: absolute; /* Position absolutely to move under the labels */
-  bottom: -25px; /* Position below the labels; adjust as needed */
-  height: 4px; /* Thickness of the line */
-  background-color: #53c8ca; /* Color of the line */
-  transition: left 0.3s ease, width 0.3s ease; /* Smooth transition for movement */
+  position: absolute;
+  bottom: -25px;
+  height: 4px;
+  background-color: #53c8ca;
+  transition: left 0.3s ease, width 0.3s ease;
 }
 
-
 .nav-link {
-  color:rgb(129, 138, 168); /* Color of the text */
+  color: rgb(129, 138, 168);
   font-weight: bold;
-  font-family: 'Orbitron', sans-serif; /* Use Orbitron font */
+  font-family: 'Orbitron', sans-serif;
   background: none;
   border: none;
-  margin-left: 20px; /* Space between links */
-  font-size: 16px; /* Font size */
+  margin-left: 20px;
+  font-size: 16px;
   cursor: pointer;
 }
 
 .nav-link.active {
-  color: white; /* Active link color */
+  color: white;
 }
 
-
 .filter-input {
-  color: #fff; /* Text color */
+  color: #fff;
   background: none;
   border: none;
-  margin-left: 20px; /* Space between filter and links */
-  font-size: 16px; /* Font size */
-  cursor: pointer;
+  margin-left: 20px;
+  font-size: 16px;
 }
 
-
-
 .filter-input {
-  margin-left: 20px; /* Space between filter and links */
+  margin-left: 20px;
   padding: 5px;
   font-size: 16px;
 }
 
 @media (max-width: 1500px) {
   .navbar-content {
-    margin-left: 500px; /* Decrease margin-left for smaller screens */
+    margin-left: 500px;
   }
 }
 
 @media (max-width: 1200px) {
   .navbar-content {
-    margin-left: 400px; /* Further decrease margin-left */
+    margin-left: 400px;
   }
 }
 
 @media (max-width: 992px) {
   .navbar-content {
-    margin-left: 200px; /* Further decrease margin-left */
+    margin-left: 200px;
   }
 }
 
 @media (max-width: 768px) {
   .navbar-content {
-    margin-left: 100px; /* Further decrease margin-left */
+    margin-left: 100px;
   }
 }
 
 @media (max-width: 480px) {
   .navbar-content {
-    margin-left: 0; /* Remove margin-left for very small screens */
-    gap: 10px; /* Smaller gap between elements */
-    padding: 0 10px; /* Add some padding on the sides for smaller screens */
+    margin-left: 0;
+    gap: 10px;
+    padding: 0 10px;
   }
 
   .nav-link, .filter-input {
-    font-size: 10px; /* Reduce font size for very small screens */
+    font-size: 10px;
   }
 }

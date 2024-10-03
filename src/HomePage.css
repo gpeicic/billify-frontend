@@ -1,4 +1,3 @@
-/* Background gradient for the intro */
 .intro-screen {
   display: flex;
   justify-content: center;
@@ -8,12 +7,10 @@
   animation: fadeOut 14s forwards;
 }
 
-/* Ensure the body has a similar background */
 body {
   background: linear-gradient(135deg, #f0f0f0, #d3d3d3);
 }
 
-/* Center the typewriter effect */
 .typewriter {
   font-family: 'Courier New', Courier, monospace;
   font-size: 4em;
@@ -22,53 +19,52 @@ body {
   overflow: hidden;
   border-right: 2px solid;
   text-align: center; 
-  display: inline-block; /* Allow for centering */
+  display: inline-block;
   animation: typing 2s steps(22), blink .5s step-end infinite alternate;
-  margin: 0 ; /* Center the typewriter in its container */
+  margin: 0 ;
 }
 .typing {
-  transition: width 0.5s ease; /* Smooth transition for width */
+  transition: width 0.5s ease;
 }
 
 
-/* Typing animation */
+
 @keyframes typing {
   from { width: 0 }
   to { width: 100% }
 }
 
-/* Cursor blink animation */
+
 @keyframes blink {
   50% { border-color: transparent; }
 }
 
-/* Fade out after typewriter finishes */
 @keyframes fadeOut {
   0% { opacity: 1; }
   100% { opacity: 0; }
 }
 
-/* Main home content background */
+
 .home-content {
   background-image: url("../public/robot3.jpg");
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background-size: cover; /* Cover the entire area */
+  background-size: cover;
   background-position: 100px center;
-  background-repeat: no-repeat; /* Prevent the image from repeating */
-  opacity: 0; /* Start with no opacity */
+  background-repeat: no-repeat;
+  opacity: 0;
   transition: opacity 1s ease-in; 
 }
 .home-content.visible {
-  opacity: 1; /* Fully visible when the class is applied */
+  opacity: 1;
 }
 .second-content {
   background-color: rgb(2, 2, 2);
   height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Align items at the start for height consistency */
+  align-items: flex-start;
   padding-bottom: 600px;
 }
 
@@ -84,7 +80,7 @@ body {
 }
 
 .lorem-text {
-  font-family: 'Orbitron', sans-serif; /* Use Orbitron font */
+  font-family: 'Orbitron', sans-serif;
   font-size: 24px; 
   color: black;
   max-width: 600px;
@@ -95,7 +91,7 @@ body {
 }
 
 .lorem-text-second {
-  font-family: 'Orbitron', sans-serif; /* Use Orbitron font */
+  font-family: 'Orbitron', sans-serif;
   font-size: 40px; 
   color: white;
   max-width: 600px;
@@ -105,7 +101,7 @@ body {
 }
 
 .lorem-text-second2 {
-  font-family: 'Orbitron', sans-serif; /* Use Orbitron font */
+  font-family: 'Orbitron', sans-serif;
   font-size: 25px; 
   color: rgba(255, 255, 255, 0.479);
   max-width: 900px;
@@ -116,7 +112,7 @@ body {
 
 .phone-frame-wrapper {
   position: relative;
-  width: 60%; /* Adjust width as needed */
+  width: 60%;
   margin: 10px auto;
 }
 
@@ -128,17 +124,17 @@ body {
 
 .phone-video {
   position: absolute;
-  top: 8.5%; /* Adjust to fit the screen area of your phone frame */
-  left: 15.5%; /* Adjust to fit the screen area of your phone frame */
-  width: 69%; /* Adjust width to fit the phone screen */
-  height: 79%; /* Adjust height to fit the phone screen */
+  top: 8.5%;
+  left: 15.5%;
+  width: 69%;
+  height: 79%;
   border-radius: 10px;
 }
 
 .container {
   display: flex;
-  justify-content: space-between; /* Optional: Adjusts space between items */
-  align-items: flex-start; /* Align items at the start */
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .billify-description {
@@ -150,39 +146,39 @@ body {
 }
 
 .billify-description2, .billify-description {
-  width: 20%; /* Adjust width for your text container */
+  width: 20%; 
   text-align: left;
-  color: rgba(255, 255, 255, 0.541); /* Adjust text color to your design */
+  color: rgba(255, 255, 255, 0.541);
   font-family: 'Orbitron', sans-serif;
-  opacity: 0; /* Start invisible */
-  transform: translateY(50px); /* Start lower */
-  transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+  opacity: 0; 
+  transform: translateY(50px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .hidden {
-  opacity: 0; /* Start invisible */
+  opacity: 0;
   transform: translateY(50px); /* Move down */
   transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
 }
 
 .fade-out {
-  opacity: 0; /* Fully invisible */
-  transform: translateY(50px); /* Move down */
+  opacity: 0;
+  transform: translateY(50px);
 }
 
 .visible {
-  opacity: 1; /* Fully visible */
-  transform: translateY(0); /* Original position */
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .billify-description .intro {
-  font-size: 1rem; /* Make text more prominent */
+  font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 10px;
 }
 
 .billify-description .billify-title {
-  font-size: 2.2rem; /* Bold and big */
+  font-size: 2.2rem;
   font-weight: bold;
   margin: 10px 0;
 }
@@ -192,13 +188,13 @@ body {
   background-position: center 90px;
   background-repeat: no-repeat;
   background-color: black;
-  border-radius: 15px; /* Rounded edges */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
-  width: 1000px; /* Set a width for the card */
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 1000px;
   height: 600px;
   margin-top:0;
   margin-left: 450px;
-  padding: 15px; /* Padding inside the card */
+  padding: 15px;
 }
 .card p{
   font-size: 1.5rem;
@@ -210,26 +206,26 @@ body {
 .billify-description .billify-subtitle {
   font-size: 1.7rem;
   font-weight: bold;
-  color: #ffffff; /* Keep it distinct */
+  color: #ffffff;
   margin-bottom: 20px;
 }
 
 .billify-description .final-text {
-  color: #c0c0c0; /* Slightly lighter text */
+  color: #c0c0c0;
 }
 
 .picture {
   margin-left: 200px;
   margin-right: 400px;
-  margin-top: 250px; /* Space between the image and text */
+  margin-top: 250px;
 }
 
 .left-image {
-  width: 500px; /* Set a width for the image */
-  height: auto; /* Maintain aspect ratio */
+  width: 500px;
+  height: auto;
 }
 
-/* Import Orbitron font */
+
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400&display=swap');
 
 .futuristic-navbar {
@@ -240,10 +236,10 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px; /* Add some padding */
-  background-color: transparent; /* Make it transparent */
-  z-index: 1000; /* Ensure it stays above other content */
-  opacity: 0; /* Start with no opacity */
+  padding: 10px 20px;
+  background-color: transparent;
+  z-index: 1000;
+  opacity: 0;
   transition: opacity 1s ease-in; 
 }
 .futuristic-navbar.visible{
@@ -252,7 +248,7 @@ body {
 
 .logo {
   color: black;
-  font-size: 50px; /* Adjust font size */
+  font-size: 50px;
   font-weight: bold;
   font-family: 'Orbitron', sans-serif;
 }
@@ -264,13 +260,13 @@ body {
 }
 
 .line {
-  width: 25px; /* Width of each line */
-  height: 3px; /* Height of each line */
-  background-color: black; /* Change this to your preferred color */
-  margin: 4px 0; /* Space between lines */
+  width: 25px;
+  height: 3px;
+  background-color: black;
+  margin: 4px 0;
 }
 
-/* For the 3D model section */
+
 canvas {
   width: 100%;
   height: 100%;
@@ -278,40 +274,40 @@ canvas {
 
 .button-group {
   display: flex;
-  gap: 10px; /* Space between buttons */
+  gap: 10px;
 }
 
 .login-button {
-  background-color: black; /* Black background */
-  color: white; /* Text color */
-  font-family: 'Orbitron', sans-serif; /* Use Orbitron font */
-  font-size: 18px; /* Adjust font size */
-  padding: 10px 20px; /* Add padding */
-  border: none; /* Remove border */
-  cursor: pointer; /* Pointer cursor on hover */
-  border-radius: 5px; /* Rounded corners */
+  background-color: black;
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 18px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 .signup-button {
-  background-color: green; /* Green background */
-  color: white; /* Text color */
-  font-family: 'Orbitron', sans-serif; /* Use Orbitron font */
-  font-size: 18px; /* Adjust font size */
-  padding: 10px 20px; /* Add padding */
-  border: none; /* Remove border */
-  cursor: pointer; /* Pointer cursor on hover */
-  border-radius: 5px; /* Rounded corners */
+  background-color: green;
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 18px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 .login-button:hover,
 .signup-button:hover {
-  opacity: 0.8; /* Slightly change opacity on hover */
+  opacity: 0.8;
 }
 
 .slideshow-container {
   position: relative;
   width: 100%;
-  height: 400px; /* Adjust height as needed */
+  height: 400px;
   overflow: hidden;
 }
 
@@ -322,7 +318,7 @@ canvas {
 
 .slide {
   position: relative;
-  height: 300px; /* Adjust height as needed */
+  height: 300px;
   border-radius: 10px;
   overflow: hidden;
 }
@@ -401,18 +397,18 @@ canvas {
 }
 
 .centered-image {
-  width: 51%; /* Adjust the width as needed */
+  width: 51%;
   margin-left: 465px;
 }
 
 .side-by-side-container {
   display: flex;
   justify-content: center;
-  gap: 20px; /* Space between the side images */
+  gap: 20px;
 }
 
 .side-image {
-  width: 25%; /* Adjust the width as needed */
+  width: 25%;
 
 }
 .forth-title{
@@ -429,7 +425,7 @@ canvas {
   margin-left: 460px;
 }
 .footer {
-  background-color: #171717; /* Change to your desired color */
+  background-color: #171717;
   color: rgba(255, 255, 255, 0.486);
   padding: 20px 0;
   text-align: center;

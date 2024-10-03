@@ -19,13 +19,12 @@ const SignUp = () => {
   const [passwordTouched, setPasswordTouched] = useState(false);
   const navigate = useNavigate();
 
-  // Regex for validating the email format
   const validateEmailFormat = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
 
-  // Debounced email check with useCallback to avoid re-creating the function
+
   const checkEmail = useCallback(
     debounce(async (email) => {
       if (email && validateEmailFormat(email)) {
@@ -39,12 +38,12 @@ const SignUp = () => {
           setEmailValid(false);
         }
       } else {
-        setEmailValid(false); // Invalid email format or empty field
+        setEmailValid(false);
       }
     }, 500), []
   );
 
-  // Only call the debounced email checker when the user stops typing
+
   useEffect(() => {
     if (email) {
       checkEmail(email);
@@ -53,21 +52,20 @@ const SignUp = () => {
     }
   }, [email, checkEmail]);
 
-  // Password validation and strength check
   const validatePassword = (password) => {
     const hasUpperCase = /[A-Z]/.test(password);
     const lengthValid = password.length >= 6;
 
     if (!password) {
-      return null; // No validation if password is empty
+      return null; 
     }
 
     setPasswordValid(lengthValid && hasUpperCase);
 
-    // Password strength meter logic
+  
     let strength = 0;
-    if (lengthValid) strength += 50; // 50% strength if length is valid
-    if (hasUpperCase) strength += 50; // Another 50% if it has an uppercase letter
+    if (lengthValid) strength += 50;
+    if (hasUpperCase) strength += 50;
 
     setPasswordStrength(strength);
   };
@@ -83,7 +81,7 @@ const SignUp = () => {
     e.preventDefault();
     setLoading(true);
 
-    // Check if all validations pass before proceeding
+   
     if (emailValid && passwordValid && passwordsMatch) {
       try {
         const client = {
@@ -131,7 +129,7 @@ const SignUp = () => {
         }}
       >
         <Grid container>
-          {/* Left Side (Sign Up Form) */}
+          
           <Grid item xs={12} sm={6}>
             <Box
               sx={{
@@ -214,15 +212,15 @@ const SignUp = () => {
                 </Box>
                 <Box display="flex" justifyContent="center" mt={2}>
                   <Button
-                    onClick={() => navigate('/')} // Navigate to home page
+                    onClick={() => navigate('/')} 
                     fullWidth
-                    variant="contained" // Match the login button style
+                    variant="contained"
                     sx={{
                       marginTop: 2,
-                      backgroundColor: 'black', // Same background color as login button
-                      color: 'white', // Same text color as login button
-                      borderRadius: 0, // Sharp corners
-                      '&:hover': { backgroundColor: '#333' }, // Same hover effect
+                      backgroundColor: 'black',
+                      color: 'white',
+                      borderRadius: 0,
+                      '&:hover': { backgroundColor: '#333' },
                     }}
                   >
                     Back to Home
@@ -247,7 +245,6 @@ const SignUp = () => {
             </Box>
           </Grid>
 
-          {/* Right Side (Image) */}
           <Grid item xs={12} sm={6}
             sx={{
               backgroundColor: 'black',

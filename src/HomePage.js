@@ -80,7 +80,7 @@ const HomePage = () => {
   const handleTypewriterComplete = () => {
     setShowMainContent(true);
     setTimeout(() => {
-      setContentOpacity(1); // Set opacity to 1 after a short delay
+      setContentOpacity(1);
     }, 1);
   };
 
@@ -224,8 +224,7 @@ const HomePage = () => {
                 </div>
               </div>
           </div>
-
-          {/* Footer */}
+          
           <footer className="footer">
             <div className="footer-content">
               <p>&copy; 2024 Billify. All rights reserved.</p>

@@ -137,15 +137,15 @@ const LoginPage = () => {
                     Login
                   </Button>
                   <Button
-                      onClick={() => navigate('/')} // Navigate to home page
+                      onClick={() => navigate('/')}
                       fullWidth
-                      variant="contained" // Match the login button style
+                      variant="contained"
                       sx={{
                         marginTop: 2,
-                        backgroundColor: 'black', // Same background color as login button
-                        color: 'white', // Same text color as login button
-                        borderRadius: 0, // Sharp corners
-                        '&:hover': { backgroundColor: '#333' }, // Same hover effect
+                        backgroundColor: 'black',
+                        color: 'white',
+                        borderRadius: 0,
+                        '&:hover': { backgroundColor: '#333' },
                       }}
                     >
                       Back to Home

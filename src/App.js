@@ -4,8 +4,6 @@ import LoginPage from './LoginPage';
 import AccountPage from './AccountPage'; 
 import HomePage from './HomePage';
 import SignUp from './SignUp';
-import About from './About';
-import Contacts from './Contacts';
 import ProtectedRoute from './ProtectedRoute';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
@@ -17,8 +15,6 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage/>}/>
           <Route path="/signUp" element={<SignUp />} />
-          <Route path="/about" element={<ProtectedRoute element={<About />} />} />
-          <Route path="/contacts" element={<ProtectedRoute element={<Contacts />} />} />
           <Route path="/accounts" element={<ProtectedRoute element={<AccountPage />} />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

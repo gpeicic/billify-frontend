@@ -32,9 +32,8 @@ const AccountPage = () => {
   const [error, setError] = useState('');
   const [filteredAccounts, setFilteredAccounts] = useState({});
   const [chartData, setChartData] = useState([]);
-  const [isExpanded, setIsExpanded] = useState(false); // Track expansion state
-  const [selectedDate, setSelectedDate] = useState(''); // Track the date of the 
-
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [selectedDate, setSelectedDate] = useState('');
 
   useEffect(() => {
     const id = localStorage.getItem('id');
@@ -45,7 +44,7 @@ const AccountPage = () => {
         const groupedAccounts = groupAccountsByDate(response.data);
         setAccounts(groupedAccounts);
         setFilteredAccounts(groupedAccounts);
-        setChartData(generateChartData(groupedAccounts)); // Prepare chart data
+        setChartData(generateChartData(groupedAccounts));
       } catch (err) {
         console.error('Error fetching accounts:', err);
         setError('Failed to fetch accounts.');
@@ -98,8 +97,8 @@ const AccountPage = () => {
         label: 'Expenditure',
         data: chartData.map(item => item.expenditure),
         fill: true,
-        backgroundColor: 'rgba(135, 6, 250, 0.3)', // Light blue fill color
-        borderColor: 'rgba(135, 106, 250, 1)', // Darker blue border color
+        backgroundColor: 'rgba(135, 6, 250, 0.3)',
+        borderColor: 'rgba(135, 106, 250, 1)',
         borderWidth: 2,
       },
     ],
@@ -109,45 +108,45 @@ const AccountPage = () => {
     labels: ['Food', 'Rent', 'Gas', 'School'],
     datasets: [
       {
-        data: [40, 30, 20, 10], // Categories ordered from biggest to smallest
+        data: [40, 30, 20, 10],
         backgroundColor: [
-          'rgba(135, 6, 250,1)', // Light purple for Food
-          '#53c8ca',               // Cyan for Rent
-          'rgb(252,82,149)',        // Pink for Gas
-          'rgba(135, 106, 250,1)'  // Purple for School
+          'rgba(135, 6, 250,1)',
+          '#53c8ca',
+          'rgb(252,82,149)',
+          'rgba(135, 106, 250,1)'
         ],
         borderColor: [
-          'rgba(135, 6, 250,1)', // Matching border for Food
-          '#53c8ca',               // Matching border for Rent
-          'rgba(252,82,149,1)',        // Matching border for Gas
-          'rgba(135, 106, 250,1)'  // Matching border for School
+          'rgba(135, 6, 250,1)',
+          '#53c8ca',
+          'rgba(252,82,149,1)',
+          'rgba(135, 106, 250,1)'
         ],
-        borderWidth: [4, 2, 1, 1], // Border thickness for each category
-        hoverOffset: 10, // Adds hover effect for emphasis
+        borderWidth: [4, 2, 1, 1],
+        hoverOffset: 10,
       },
     ],
   };
 
   const gradientLineChartData = {
-    labels: Array.from({ length: 24 }, (_, i) => `${i}:00`), // 24 hours labeled from 0:00 to 23:00
+    labels: Array.from({ length: 24 }, (_, i) => `${i}:00`),
     datasets: [
       {
         label: 'Spending',
-        data: [50, 20, 30, 60, 80, 120, 150, 200, 180, 170, 110, 90, 50, 30, 20, 60, 70, 120, 150, 130, 100, 60, 40, 20], // Random values for now
+        data: [50, 20, 30, 60, 80, 120, 150, 200, 180, 170, 110, 90, 50, 30, 20, 60, 70, 120, 150, 130, 100, 60, 40, 20],
         fill: true,
         backgroundColor: (context) => {
           const chart = context.chart;
           const { ctx, chartArea } = chart;
   
-          if (!chartArea) return null; // Return null if chartArea isn't available yet
+          if (!chartArea) return null;
   
           const gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.left);
-          gradient.addColorStop(0, 'rgba(28, 250, 250, 0.6)'); // Blue (low spending)
-          gradient.addColorStop(1, 'rgba(250, 6, 135, 0.6)'); // Red (high spending)
+          gradient.addColorStop(0, 'rgba(28, 250, 250, 0.6)');
+          gradient.addColorStop(1, 'rgba(250, 6, 135, 0.6)');
   
           return gradient;
         },
-        borderColor: 'rgba(250, 6, 135, 1)', // Red border for high-spending areas
+        borderColor: 'rgba(250, 6, 135, 1)',
         borderWidth: 2,
         pointBackgroundColor: 'white',
       },
@@ -197,7 +196,7 @@ const AccountPage = () => {
   const pieChartOptions = {
     responsive: true,
     maintainAspectRatio: false,
-    cutout: '60%', // Make it a donut chart
+    cutout: '60%',
     plugins: {
       legend: {
         position: 'bottom',
@@ -215,7 +214,7 @@ const AccountPage = () => {
           const maxValue = Math.max(...pieChartData.datasets[0].data);
           const minValue = Math.min(...pieChartData.datasets[0].data);
           
-          return ((value - minValue) / (maxValue - minValue)) * 10 + 5; // Thickness based on value
+          return ((value - minValue) / (maxValue - minValue)) * 10 + 5;
         },
       },
     },
@@ -277,7 +276,7 @@ const AccountPage = () => {
             <div className="modal-content">
               <h2>Receipts for {selectedDate}</h2>
               {filteredAccounts[selectedDate]?.map((account) => (
-                <div key={account.id} className="account-card">
+                <div key={account.id} className="account-card expanded">
                   <div className="card-header">
                     <img
                       src={'default-logo.png'}
@@ -292,18 +291,6 @@ const AccountPage = () => {
                     <p>{new Date(account.date).toLocaleDateString()}</p>
                     <p className="card-info">Time:</p>
                     <p>{new Date(account.date).toLocaleTimeString()}</p>
-                    <p className="card-info">Products:</p>
-                    <ul>
-                      {account.boughtItems && account.boughtItems.length ? (
-                        account.boughtItems.map((item) => (
-                          <li key={item.item.id}>
-                            {item.item.itemName} - Quantity: {item.amount} | Price per unit: €{item.item.price} | Total: €{(item.item.price * item.amount).toFixed(2)}
-                          </li>
-                        ))
-                      ) : (
-                        <p>No products found</p>
-                      )}
-                    </ul>
                   </div>
                 </div>
               ))}
@@ -314,16 +301,18 @@ const AccountPage = () => {
           </div>
         )}
 
-        {/* Chart containers */}
         <div className="cards-container-2">
-          <Line data={lineChartData} options={{ responsive: true, maintainAspectRatio: false }} />
+          <h3>Daily Expenditure</h3>
+          <Line data={lineChartData} />
         </div>
 
         <div className="cards-container-3">
+          <h3>Spending by Category</h3>
           <Doughnut data={pieChartData} options={pieChartOptions} />
         </div>
 
         <div className="cards-container-4">
+          <h3>Spending Over 24 Hours</h3>
           <Line data={gradientLineChartData} options={gradientLineChartOptions} />
         </div>
       </div>

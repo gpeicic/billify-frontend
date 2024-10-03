@@ -1,26 +1,26 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser as faUserIcon, faGift, faBell, faCog,faSignOutAlt  } from '@fortawesome/free-solid-svg-icons'; // Import specific icons
-import './Navbar.css'; // Import CSS file
+import { faUser as faUserIcon, faGift, faBell, faCog,faSignOutAlt  } from '@fortawesome/free-solid-svg-icons';
+import './Navbar.css';
 
 const Navbar = () => {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [activeSection, setActiveSection] = useState('insights'); // Default active section
+  const [activeSection, setActiveSection] = useState('insights');
   const navigate = useNavigate();
-  const indicatorRef = useRef(null); // Ref for the indicator
+  const indicatorRef = useRef(null);
 
   useEffect(() => {
-    const id = localStorage.getItem('id'); // Get the user id from localStorage
+    const id = localStorage.getItem('id');
 
     const fetchEmail = async () => {
       try {
         const response = await fetch(`http://localhost:8080/clients/${id}/email`);
         if (response.ok) {
           const email = await response.text();
-          setEmail(email); // Set the fetched email
+          setEmail(email);
         } else {
           setError('Failed to fetch email.');
         }
@@ -33,16 +33,15 @@ const Navbar = () => {
     };
 
     if (id) {
-      fetchEmail(); // Fetch the email if id is available
+      fetchEmail();
     } else {
       setError('No user ID found.');
       setLoading(false);
     }
   }, []);
   const handleLogout = () => {
-    // Clear local storage or any session data
     localStorage.clear();
-    navigate('/login'); // Redirect to login page
+    navigate('/login');
   };
 
   useEffect(() => {
@@ -58,17 +57,12 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-content">
-        {/* Avatar using FontAwesome icon */}
         <div className="avatar">
           <FontAwesomeIcon icon={faUserIcon} style={{ color: 'white', fontSize: '24px' }} />
         </div>
-
-        {/* Email (username) on the left */}
         <div className="navbar-username">
           {loading ? 'Loading...' : error ? error : email}
         </div>
-
-        {/* Icons on the right */}
         <div className="navbar-icons">
           <div className="icon-buttons">
             <button className="nav-icon present-icon" onClick={() => { setActiveSection('insights'); navigate('/accounts'); }}>
@@ -85,7 +79,6 @@ const Navbar = () => {
             </button>
           </div>
 
-          {/* Active section indicator */}
           <div className="navbar-labels">
             <button
               className={`nav-link ${activeSection === 'insights' ? 'active' : ''}`}
@@ -102,7 +95,7 @@ const Navbar = () => {
               onClick={() => { setActiveSection('forecasting'); }}>
               Forecasting
             </button>
-            <div className="indicator" ref={indicatorRef}></div> {/* Custom indicator line */}
+            <div className="indicator" ref={indicatorRef}></div>
           </div>
         </div>
       </div>

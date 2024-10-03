@@ -3,11 +3,7 @@
   justify-content: center;
   align-items: center;
   background-color: transparent;
-  
-  
-
 }
-
 
 .about-container {
   display: flex;
@@ -17,76 +13,66 @@
   height: 100%;
   width: 100%;
   padding: 3;
-  
 }
 
 .box {
   border-radius: 10px;
   overflow: hidden;
   color: rgb(180, 180, 180);
-  
 }
 
 .about-paper {
   margin-top: 200px;
   max-width: 800px;
   background-image: url("../src/background/deepPurple.jpg");
- 
   box-sizing: border-box;
- /* background-position-y: -100px;
-  background-position-x: -240px;*/
   border-radius: 0px;
   overflow: hidden;
   animation: fadeIn 1s ease-in-out;
   transition: transform 0.5s ease-in-out;
   padding-bottom: 100px;
-  box-shadow: 20px 20px 40px rgba(106,27,49,255), 10px 10px 20px rgba(100, 100, 100, 0.575); /* Shadow moved to right and below */
+  box-shadow: 20px 20px 40px rgba(106,27,49,255), 10px 10px 20px rgba(100, 100, 100, 0.575);
 }
 
 @media (max-width: 1200px) {
   .about-paper {
-    padding: 15px; /* Smanjenje paddinga na manjim ekranima */
-    max-width: 90%; /* Smanjenje maksimalne širine */
-    
+    padding: 15px;
+    max-width: 90%;
   }
- 
-  
 }
 
 @media (max-width: 992px) {
   .about-paper {
-    padding: 10px; /* Daljnje smanjenje paddinga */
-    max-width: 95%; /* Daljnje smanjenje maksimalne širine */
+    padding: 10px;
+    max-width: 95%;
   }
-  
 }
 
 @media (max-width: 768px) {
   .about-paper {
-    padding: 8px; /* Daljnje smanjenje paddinga */
-    max-width: 100%; /* Maksimalna širina 100% */
+    padding: 8px;
+    max-width: 100%;
   }
   
-  
   .box {
-    padding: 10px; /* Unutarnji razmak unutar Box-a */
+    padding: 10px;
   }
 
   .about-container {
-    padding: 10px; /* Smanjenje paddinga kontejnera */
+    padding: 10px;
   }
 }
 
 @media (max-width: 480px) {
   .about-paper {
-    padding: 5px; /* Daljnje smanjenje paddinga */
+    padding: 5px;
   }
-  .about-background{
+  .about-background {
     background-image: url("../src/background/deepPurple.jpg");
     background-repeat: no-repeat;
   }
   .box {
-    padding: 5px; /* Daljnje smanjenje paddinga unutar Box-a */
+    padding: 5px;
   }
 }
 
